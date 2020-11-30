@@ -8,12 +8,12 @@ class MotorThread(Thread):
     ev3dev2_motor = conn.modules['ev3dev2.motor']
 
     def __init__(self):
+        Thread.__init__(self)
         self._motor_l_speed = 0
         self._motor_r_speed = 0
         self.motor_l = self.ev3dev2_motor.MediumMotor(self.ev3dev2_motor.OUTPUT_C)
         self.motor_r = self.ev3dev2_motor.MediumMotor(self.ev3dev2_motor.OUTPUT_B)
         self.running = True
-        Thread.__init__(self)
 
     def run(self):
         while self.running:
