@@ -20,7 +20,7 @@ while True:
         perimeter = cv.arcLength(contour, True)
         approx_dp = cv.approxPolyDP(contour, 0.001 * perimeter, True)
 
-        if perimeter > 1500 and perimeter < 2000:
+        if perimeter > 1500 and perimeter < 1700:
             cv.drawContours(image,
                            [approx_dp],
                            -1,

@@ -2,6 +2,7 @@ import cv2 as cv
 from threading import Thread
 
 
+
 class CameraThread(Thread):
     ip_of_camera = '192.168.0.5'
     cap = cv.VideoCapture(f'http://{ip_of_camera}/live')
@@ -39,6 +40,7 @@ class CameraThread(Thread):
             if cv.waitKey(1) & 0xFF == ord('q'):
                 break
             cv.imshow('Result', self.image_from_camera_with_didcated_lines)
+            cv.imshow('Original', self.image_from_camera)
         self.cap.release()
         cv.destroyAllWindows()
 
@@ -72,7 +74,6 @@ class CameraThread(Thread):
                               3,
                               (0, 255, 255),
                               2)
-                    cv.putText()
 
     def update_coordinates_of_lines_for_following(self):
         cv.imwrite('lines.png', self.images_of_lines_with_hsv_filter)
